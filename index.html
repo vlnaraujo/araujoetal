@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Victor Araújo | Biologist</title>
+  <meta name="description" content="Victor Araújo — PhD Biologist at Universidad de los Andes, Colombia. Research on Neotropical fauna diversification, phylogenetics, genomics, museomics, and biogeography.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #0e0e0e;
+      --bg-raised: #161616;
+      --bg-card:   #1c1c1c;
+      --border:    rgba(255,255,255,0.08);
+      --border-md: rgba(255,255,255,0.14);
+      --text:      #e8e4dc;
+      --muted:     #888680;
+      --accent:    #c8b89a;
+      --accent-dim:#7a6f5e;
+      --green:     #6b8c6b;
+      --green-dim: #3d5c3d;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(14,14,14,0.88);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 0.5px solid var(--border);
+      padding: 0 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 56px;
+    }
+
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 19px;
+      font-weight: 400;
+      color: var(--text);
+      letter-spacing: 0.03em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 12px;
+      font-weight: 400;
+      color: var(--muted);
+      text-decoration: none;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--text); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: calc(100vh - 56px);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      padding: 5rem 3rem 5rem 5rem;
+      gap: 4rem;
+      border-bottom: 0.5px solid var(--border);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* subtle background grid */
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(var(--border) 1px, transparent 1px),
+        linear-gradient(90deg, var(--border) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse 70% 80% at 60% 50%, black 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-text {
+      position: relative;
+      animation: fadeUp 0.9s cubic-bezier(.22,1,.36,1) both;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-eyebrow {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.4rem;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .hero-eyebrow::after {
+      content: '';
+      display: block;
+      width: 32px;
+      height: 0.5px;
+      background: var(--accent);
+      opacity: 0.5;
+    }
+
+    h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(56px, 7vw, 90px);
+      font-weight: 300;
+      line-height: 1.0;
+      color: var(--text);
+      margin-bottom: 0.25em;
+      letter-spacing: -0.01em;
+    }
+
+    h1 em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .hero-subtitle {
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--muted);
+      margin-bottom: 2rem;
+      letter-spacing: 0.03em;
+    }
+
+    .hero-description {
+      font-size: 15px;
+      font-weight: 300;
+      color: var(--text);
+      line-height: 1.8;
+      max-width: 460px;
+      margin-bottom: 3rem;
+      opacity: 0.75;
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: var(--text);
+      color: var(--bg);
+      border: none;
+      padding: 11px 28px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      cursor: pointer;
+      text-decoration: none;
+      transition: opacity 0.2s;
+      border-radius: 2px;
+      display: inline-block;
+    }
+
+    .btn-primary:hover { opacity: 0.85; }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--text);
+      border: 0.5px solid var(--border-md);
+      padding: 11px 28px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      cursor: pointer;
+      text-decoration: none;
+      transition: border-color 0.2s, color 0.2s;
+      border-radius: 2px;
+      display: inline-block;
+    }
+
+    .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* ── HERO VISUAL ── */
+    .hero-visual {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: fadeUp 0.9s 0.15s cubic-bezier(.22,1,.36,1) both;
+    }
+
+    .photo-frame {
+      width: 340px;
+      height: 400px;
+      background: var(--bg-card);
+      border: 0.5px solid var(--border-md);
+      position: relative;
+      overflow: hidden;
+      border-radius: 2px;
+    }
+
+    /* Replace this with: <img src="your-photo.jpg" alt="Victor Araújo" style="width:100%;height:100%;object-fit:cover;"> */
+    .photo-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .photo-placeholder svg { opacity: 0.2; }
+    .photo-placeholder p { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); opacity: 0.6; }
+
+    .frame-corner {
+      position: absolute;
+      bottom: -14px;
+      right: -14px;
+      width: 75%;
+      height: 75%;
+      border: 0.5px solid var(--accent);
+      border-radius: 2px;
+      opacity: 0.12;
+      pointer-events: none;
+    }
+
+    .frame-tag {
+      position: absolute;
+      bottom: 1.2rem;
+      left: 1.2rem;
+      background: rgba(14,14,14,0.85);
+      border: 0.5px solid var(--border-md);
+      padding: 8px 14px;
+      border-radius: 2px;
+      backdrop-filter: blur(6px);
+    }
+
+    .frame-tag p  { font-size: 10px; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; }
+    .frame-tag strong { font-size: 13px; font-weight: 400; color: var(--text); display: block; margin-top: 2px; }
+
+    /* ── KEYWORDS STRIP ── */
+    .keywords-strip {
+      border-bottom: 0.5px solid var(--border);
+      padding: 1.2rem 5rem;
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+      background: var(--bg-raised);
+    }
+
+    .kw-label {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      white-space: nowrap;
+    }
+
+    .kw-sep { width: 0.5px; height: 18px; background: var(--border-md); }
+
+    .kw-list { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+
+    .kw {
+      font-size: 11px;
+      color: var(--muted);
+      padding: 4px 12px;
+      border: 0.5px solid var(--border);
+      border-radius: 30px;
+      letter-spacing: 0.02em;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .kw:hover { border-color: var(--accent-dim); color: var(--accent); }
+
+    /* ── SECTIONS ── */
+    section {
+      padding: 6rem 5rem;
+      border-bottom: 0.5px solid var(--border);
+    }
+
+    .section-label {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .section-label::after {
+      content: '';
+      display: block;
+      width: 32px;
+      height: 0.5px;
+      background: var(--accent);
+      opacity: 0.4;
+    }
+
+    h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(34px, 4vw, 52px);
+      font-weight: 300;
+      color: var(--text);
+      margin-bottom: 2.5rem;
+      line-height: 1.1;
+    }
+
+    /* ── ABOUT ── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 3fr 2fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    .about-text p {
+      font-size: 15px;
+      font-weight: 300;
+      color: var(--text);
+      line-height: 1.85;
+      opacity: 0.8;
+      margin-bottom: 1.2rem;
+    }
+
+    .about-details { display: flex; flex-direction: column; gap: 1rem; }
+
+    .detail-item {
+      padding: 1rem 1.2rem;
+      background: var(--bg-card);
+      border: 0.5px solid var(--border);
+      border-radius: 4px;
+    }
+
+    .detail-item .di-label {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 4px;
+    }
+
+    .detail-item .di-value { font-size: 14px; color: var(--text); font-weight: 300; }
+
+    /* ── RESEARCH ── */
+    #research { background: var(--bg-raised); }
+
+    .research-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.2rem;
+    }
+
+    .research-card {
+      padding: 1.8rem;
+      background: var(--bg-card);
+      border: 0.5px solid var(--border);
+      border-radius: 4px;
+      transition: border-color 0.25s, transform 0.25s;
+    }
+
+    .research-card:hover {
+      border-color: var(--accent-dim);
+      transform: translateY(-3px);
+    }
+
+    .rc-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 36px;
+      font-weight: 300;
+      color: var(--border-md);
+      line-height: 1;
+      margin-bottom: 1rem;
+    }
+
+    .rc-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      font-weight: 400;
+      color: var(--text);
+      margin-bottom: 0.6rem;
+    }
+
+    .rc-desc {
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    /* ── PUBLICATIONS ── */
+    .pub-list { display: flex; flex-direction: column; }
+
+    .pub-item {
+      padding: 1.6rem 0;
+      border-bottom: 0.5px solid var(--border);
+      display: grid;
+      grid-template-columns: 52px 1fr auto;
+      gap: 1.2rem;
+      align-items: start;
+    }
+
+    .pub-item:first-child { border-top: 0.5px solid var(--border); }
+
+    .pub-year {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--accent);
+      letter-spacing: 0.04em;
+      padding-top: 3px;
+    }
+
+    .pub-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 19px;
+      font-weight: 400;
+      color: var(--text);
+      margin-bottom: 5px;
+      line-height: 1.3;
+    }
+
+    .pub-authors {
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 4px;
+      font-weight: 300;
+    }
+
+    .pub-journal {
+      font-size: 12px;
+      color: var(--accent-dim);
+      font-style: italic;
+    }
+
+    .pub-doi {
+      font-size: 11px;
+      color: var(--muted);
+      text-decoration: none;
+      border: 0.5px solid var(--border);
+      padding: 4px 10px;
+      border-radius: 30px;
+      white-space: nowrap;
+      transition: border-color 0.2s, color 0.2s;
+      align-self: center;
+    }
+
+    .pub-doi:hover { border-color: var(--accent-dim); color: var(--accent); }
+
+    /* ── CONTACT ── */
+    #contact { background: var(--bg-raised); }
+
+    .contact-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    .contact-text {
+      font-size: 15px;
+      font-weight: 300;
+      color: var(--text);
+      line-height: 1.8;
+      opacity: 0.8;
+    }
+
+    .contact-links { display: flex; flex-direction: column; gap: 0.8rem; }
+
+    .contact-link {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem 1.2rem;
+      background: var(--bg-card);
+      border: 0.5px solid var(--border);
+      border-radius: 4px;
+      text-decoration: none;
+      color: var(--text);
+      transition: border-color 0.2s;
+    }
+
+    .contact-link:hover { border-color: var(--accent-dim); }
+
+    .cl-icon {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: var(--bg-raised);
+      border: 0.5px solid var(--border-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--accent);
+      flex-shrink: 0;
+    }
+
+    .cl-type { font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); }
+    .cl-value { font-size: 13px; color: var(--text); margin-top: 1px; font-weight: 300; }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 2rem 5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--bg);
+    }
+
+    .footer-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 15px;
+      font-weight: 300;
+      color: var(--muted);
+    }
+
+    .footer-note { font-size: 11px; color: var(--accent-dim); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      nav { padding: 0 1.5rem; }
+      .nav-links { gap: 1.2rem; }
+      .hero { grid-template-columns: 1fr; padding: 3rem 1.5rem; min-height: auto; gap: 3rem; }
+      .hero-visual { display: none; }
+      .keywords-strip { padding: 1.2rem 1.5rem; }
+      section { padding: 4rem 1.5rem; }
+      .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .contact-inner { grid-template-columns: 1fr; gap: 2rem; }
+      .pub-item { grid-template-columns: 42px 1fr; }
+      .pub-doi { display: none; }
+      footer { padding: 1.5rem; flex-direction: column; gap: 0.5rem; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ NAV ══ -->
+<nav>
+  <span class="nav-logo">Victor Araújo</span>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#research">Research</a></li>
+    <li><a href="#publications">Publications</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- ══ HERO ══ -->
+<section class="hero">
+  <div class="hero-text">
+    <p class="hero-eyebrow">Biologist · PhD</p>
+    <h1>Victor<br><em>Araújo</em></h1>
+    <p class="hero-subtitle">Universidad de los Andes, Colombia &mdash; Neotropical Fauna Diversification</p>
+    <p class="hero-description">
+      I study the mechanisms that generate biodiversity in the Neotropics — one of Earth's most extraordinary theaters of evolution. My work integrates phylogenetics, genomics, museomics, comparative biology, and biogeography to understand how and why life in this region became so strikingly diverse.
+    </p>
+    <div class="hero-ctas">
+      <a href="#research" class="btn-primary">My research</a>
+      <a href="#publications" class="btn-secondary">Publications</a>
+    </div>
+  </div>
+
+  <div class="hero-visual">
+    <div class="photo-frame">
+      <!--
+        REPLACE the placeholder below with your photo:
+        <img src="photo.jpg" alt="Victor Araújo" style="width:100%;height:100%;object-fit:cover;">
+      -->
+      <div class="photo-placeholder">
+        <svg width="52" height="52" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="26" cy="20" r="10" stroke="#888680" stroke-width="1.5"/>
+          <path d="M6 46c0-11.046 8.954-20 20-20s20 8.954 20 20" stroke="#888680" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+        <p>Your photo here</p>
+      </div>
+      <div class="frame-corner"></div>
+      <div class="frame-tag">
+        <p>Affiliation</p>
+        <strong>Uniandes · Colombia</strong>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ KEYWORDS STRIP ══ -->
+<div class="keywords-strip">
+  <span class="kw-label">Research areas</span>
+  <div class="kw-sep"></div>
+  <div class="kw-list">
+    <span class="kw">Phylogenetics</span>
+    <span class="kw">Genomics</span>
+    <span class="kw">Museomics</span>
+    <span class="kw">Comparative biology</span>
+    <span class="kw">Biogeography</span>
+    <span class="kw">Neotropical diversification</span>
+  </div>
+</div>
+
+<!-- ══ ABOUT ══ -->
+<section id="about">
+  <p class="section-label">About</p>
+  <h2>Who I am</h2>
+  <div class="about-grid">
+    <div class="about-text">
+      <p>
+        I am a biologist and PhD researcher at Universidad de los Andes, Colombia, dedicated to understanding the mechanisms behind the extraordinary diversification of Neotropical fauna. The Neotropics harbor a disproportionate share of the world's species — and I want to understand why.
+      </p>
+      <p>
+        My research integrates multiple approaches: phylogenetic inference, population genomics, museum specimen genomics (museomics), comparative methods, and historical biogeography. Together, these tools let me reconstruct the evolutionary history of lineages and ask what forces — geographic, climatic, ecological — shaped the patterns of diversity we see today.
+      </p>
+      <p>
+        I am particularly interested in how geological and climatic changes in the Neotropics — the Andes uplift, Amazonian river dynamics, Pleistocene climate oscillations — have driven speciation across taxonomic groups.
+      </p>
+    </div>
+    <div class="about-details">
+      <div class="detail-item">
+        <p class="di-label">Institution</p>
+        <p class="di-value">Universidad de los Andes, Colombia</p>
+      </div>
+      <div class="detail-item">
+        <p class="di-label">Degree</p>
+        <p class="di-value">PhD in Biology</p>
+      </div>
+      <div class="detail-item">
+        <p class="di-label">Focus</p>
+        <p class="di-value">Neotropical fauna diversification</p>
+      </div>
+      <div class="detail-item">
+        <p class="di-label">Location</p>
+        <p class="di-value">Bogotá, Colombia</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ RESEARCH ══ -->
+<section id="research">
+  <p class="section-label">Research</p>
+  <h2>What I study</h2>
+  <div class="research-grid">
+    <div class="research-card">
+      <p class="rc-num">01</p>
+      <p class="rc-title">Phylogenetics</p>
+      <p class="rc-desc">Reconstructing the evolutionary relationships of Neotropical lineages using molecular and morphological data to understand their diversification history.</p>
+    </div>
+    <div class="research-card">
+      <p class="rc-num">02</p>
+      <p class="rc-title">Genomics</p>
+      <p class="rc-desc">Leveraging population and comparative genomics to uncover the genetic basis of divergence and adaptation across taxa.</p>
+    </div>
+    <div class="research-card">
+      <p class="rc-num">03</p>
+      <p class="rc-title">Museomics</p>
+      <p class="rc-desc">Extracting genomic data from historical museum specimens to access genetic diversity across time and track evolutionary change across centuries.</p>
+    </div>
+    <div class="research-card">
+      <p class="rc-num">04</p>
+      <p class="rc-title">Biogeography</p>
+      <p class="rc-desc">Exploring how geography, geology, and climate have shaped the spatial distribution of biodiversity across the Neotropics.</p>
+    </div>
+    <div class="research-card">
+      <p class="rc-num">05</p>
+      <p class="rc-title">Comparative Biology</p>
+      <p class="rc-desc">Using comparative methods to test hypotheses about rates of diversification, trait evolution, and ecological adaptation across lineages.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PUBLICATIONS ══ -->
+<section id="publications">
+  <p class="section-label">Publications</p>
+  <h2>Selected work</h2>
+  <div class="pub-list">
+
+    <!-- PUBLICATION TEMPLATE — duplicate and fill in your papers -->
+    <div class="pub-item">
+      <span class="pub-year">2024</span>
+      <div>
+        <p class="pub-title">Your publication title goes here</p>
+        <p class="pub-authors">Araújo, V., Author B, Author C</p>
+        <p class="pub-journal">Journal of Biogeography</p>
+      </div>
+      <a href="#" class="pub-doi">DOI ↗</a>
+    </div>
+
+    <div class="pub-item">
+      <span class="pub-year">2023</span>
+      <div>
+        <p class="pub-title">Another publication title goes here</p>
+        <p class="pub-authors">Araújo, V., Author B</p>
+        <p class="pub-journal">Molecular Phylogenetics and Evolution</p>
+      </div>
+      <a href="#" class="pub-doi">DOI ↗</a>
+    </div>
+
+    <div class="pub-item">
+      <span class="pub-year">2022</span>
+      <div>
+        <p class="pub-title">A third publication title goes here</p>
+        <p class="pub-authors">Araújo, V., Author B, Author C, Author D</p>
+        <p class="pub-journal">Systematic Biology</p>
+      </div>
+      <a href="#" class="pub-doi">DOI ↗</a>
+    </div>
+    <!-- END TEMPLATE -->
+
+  </div>
+  <br>
+  <a href="https://scholar.google.com" target="_blank" class="btn-secondary" style="margin-top: 1.5rem;">Full list on Google Scholar ↗</a>
+</section>
+
+<!-- ══ CONTACT ══ -->
+<section id="contact">
+  <p class="section-label">Contact</p>
+  <h2>Get in touch</h2>
+  <div class="contact-inner">
+    <p class="contact-text">
+      I am always open to conversations about Neotropical biology, collaborative research, or questions about my work. Feel free to reach out through any of the channels below.
+    </p>
+    <div class="contact-links">
+      <!-- UPDATE each href and the display text below -->
+      <a href="mailto:your.email@uniandes.edu.co" class="contact-link">
+        <div class="cl-icon">@</div>
+        <div>
+          <p class="cl-type">Email</p>
+          <p class="cl-value">your.email@uniandes.edu.co</p>
+        </div>
+      </a>
+      <a href="https://scholar.google.com/citations?user=YOUR_ID" target="_blank" class="contact-link">
+        <div class="cl-icon">GS</div>
+        <div>
+          <p class="cl-type">Google Scholar</p>
+          <p class="cl-value">Victor Araújo</p>
+        </div>
+      </a>
+      <a href="https://www.researchgate.net/profile/YOUR_PROFILE" target="_blank" class="contact-link">
+        <div class="cl-icon">RG</div>
+        <div>
+          <p class="cl-type">ResearchGate</p>
+          <p class="cl-value">Victor Araújo</p>
+        </div>
+      </a>
+      <a href="https://orcid.org/YOUR_ORCID" target="_blank" class="contact-link">
+        <div class="cl-icon">iD</div>
+        <div>
+          <p class="cl-type">ORCID</p>
+          <p class="cl-value">YOUR-ORCID-ID</p>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <span class="footer-name">Victor Araújo</span>
+  <span class="footer-note">Universidad de los Andes · Bogotá, Colombia</span>
+</footer>
+
+</body>
+</html>
